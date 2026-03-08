@@ -17,7 +17,6 @@ def run_ps(cmd):
 def check_w01():
     """W-01: Administrator 계정명 및 패스워드 정책 점검"""
     result = {"id": "W-01", "title": "Administrator 계정 이름 변경", "status": "양호", "details": []}
-    
     # 1. 관리자 이름 체크
     ps_cmd = "powershell -Command \"Get-LocalUser | Where-Object {$_.SID -like 'S-1-5-*-500'} | Select-Object Name | ConvertTo-Json\""
     raw = subprocess.run(ps_cmd, capture_output=True, text=True, shell=True)
